@@ -3,6 +3,7 @@ import { Icons } from "./Icons";
 import Link from "next/link";
 import NavItems from "./NavItems";
 import { buttonVariants } from "./ui/button";
+import Cart from "./Cart";
 
 const Navbar = () => {
   const user: String | null = null;
@@ -56,6 +57,10 @@ const Navbar = () => {
                     <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   </div>
                 )}
+
+                <div className="ml-4 flow-root lg:ml-6">
+                  <Cart />
+                </div>
               </div>
             </div>
           </div>
