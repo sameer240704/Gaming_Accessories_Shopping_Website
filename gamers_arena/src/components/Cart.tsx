@@ -3,15 +3,20 @@ import { Separator } from "@radix-ui/react-separator";
 import {
   Sheet,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "./ui/sheet";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { formatPrice } from "@/lib/utils";
+import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import Image from "next/image";
+import EmptyCart from "../../public/empty-cart-illustration.gif";
 
 const Cart = () => {
-  const itemCount = 1;
+  const itemCount = 0;
   const transaction_fee = 100;
 
   return (
@@ -46,11 +51,42 @@ const Cart = () => {
                   <span className="flex-1">Transaction Fee</span>
                   <span className="">{formatPrice(transaction_fee)}</span>
                 </div>
+                <div className="flex">
+                  <span className="flex-1">Total</span>
+                  <span className="">{formatPrice(transaction_fee)}</span>
+                </div>
               </div>
+              <SheetFooter>
+                <SheetTrigger asChild>
+                  <Link
+                    href="/cart"
+                    className={buttonVariants({ className: "w-full" })}
+                  >
+                    Proceed to Checkout
+                  </Link>
+                </SheetTrigger>
+              </SheetFooter>
             </div>
           </>
         ) : (
-          <div></div>
+          <div className="h-full flex flex-col items-center justify-center space-y-1">
+            <div className="relative mb-4 h-60 w-60 text-muted-foreground">
+              <Image src={EmptyCart} alt="Empty Cart" className="" />
+            </div>
+            <div className="text-xl font-semibold">Your cart is empty!</div>
+            <SheetTrigger asChild>
+              <Link
+                href="/products"
+                className={buttonVariants({
+                  variant: "link",
+                  size: "sm",
+                  className: "text-sm text-muted-foreground",
+                })}
+              >
+                Add items to your cart now
+              </Link>
+            </SheetTrigger>
+          </div>
         )}
       </SheetContent>
     </Sheet>
