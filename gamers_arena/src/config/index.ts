@@ -16,7 +16,7 @@ export const PRODUCT_CATEGORIES = [
       {
         name: "Wireless Keyboards",
         href: "#",
-        imageSrc: "/nav/keyboards/wireless_keyboard.png",
+        imageSrc: "/nav/keyboards/wireless_keyboard.jpg",
       },
     ],
   },
