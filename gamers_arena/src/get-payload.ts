@@ -10,7 +10,7 @@ interface Args {
 }
 
 dotenv.config({
-  path: path.resolve(__dirname, "../env"),
+  path: path.resolve(__dirname, "../.env"),
 });
 
 let cached = (global as any).payload;
