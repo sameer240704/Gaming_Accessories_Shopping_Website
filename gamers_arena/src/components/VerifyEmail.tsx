@@ -17,7 +17,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     token,
   });
 
-  if (false) {
+  if (isError) {
     return (
       <div className="flex flex-col items-center gap-2">
         <MdCancel className="h-10 w-10 text-red-600" />
@@ -29,7 +29,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     );
   }
 
-  if (false) {
+  if (data?.success) {
     return (
       <div className="h-full flex flex-col items-center justify-center">
         <div className="relative mb-4 h-60 w-60 text-muted-foreground">
@@ -46,7 +46,7 @@ const VerifyEmail = ({ token }: VerifyEmailProps) => {
     );
   }
 
-  if (true) {
+  if (isLoading) {
     return (
       <div className="flex flex-col items-center gap-2">
         <BiLoaderCircle className="animate-spin h-10 w-10 text-blue-600" />

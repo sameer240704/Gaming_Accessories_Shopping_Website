@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "../lib/utils";
 import Navbar from "@/components/Navbar";
 import Providers from "@/components/Provider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <div className="flex-grow flex-1">{children}</div>
           </Providers>
         </main>
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );
