@@ -32,7 +32,13 @@ const Page = () => {
   const isSeller = searchParams.get("as") === "seller";
   const origin = searchParams.get("origin"); // Using to redirect from the card page to the sign-in page
 
-  const continueAsSeller = () => {};
+  const continueAsSeller = () => {
+    router.push("?as=seller");
+  };
+
+  const continueAsBuyer = () => {
+    router.replace("/sign-in");
+  };
 
   const { mutate: signIn, isLoading } = trpc.auth.signIn.useMutation({
     onError: (error) => {
@@ -72,7 +78,9 @@ const Page = () => {
         <div className="mx-auto w-full flex flex-col justify-center space-y-6 sm:w-[350px]">
           <div className="flex flex-col items-center space-y-2 text-center">
             <Icons.logo className="h-20 w-20" />
-            <h1 className="text-2xl font-bold">Login to your Account</h1>
+            <h1 className="text-2xl font-bold">
+              Login to your {isSeller ? "seller" : ""} account
+            </h1>
             <Link
               href="/sign-up"
               className={buttonVariants({ variant: "link" })}
@@ -132,9 +140,21 @@ const Page = () => {
               </div>
             </div>
             {isSeller ? (
-              <Button>Continue as customer</Button>
+              <Button
+                onClick={continueAsBuyer}
+                variant={"secondary"}
+                disabled={isLoading}
+              >
+                Continue as customer
+              </Button>
             ) : (
-              <Button>Continue as Seller</Button>
+              <Button
+                onClick={continueAsSeller}
+                variant={"secondary"}
+                disabled={isLoading}
+              >
+                Continue as Seller
+              </Button>
             )}
           </div>
         </div>
